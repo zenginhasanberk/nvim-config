@@ -41,3 +41,13 @@ require('Comment').setup({
     ---Function to call after (un)comment
     post_hook = nil,
 })
+
+-- use /* */ commenting for cpp.
+-- does not work well for multiple lines!
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "cpp",
+--     callback = function()
+--         require('Comment.ft').set('cpp', {'/*%s*/'})
+--     end,
+-- })

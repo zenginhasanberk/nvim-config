@@ -17,6 +17,8 @@ return require('packer').startup(function(use)
     use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
     use 'Mofiqul/dracula.nvim'
     use 'Mofiqul/vscode.nvim'
+    use 'rose-pine/neovim'
+    use 'folke/tokyonight.nvim'
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
