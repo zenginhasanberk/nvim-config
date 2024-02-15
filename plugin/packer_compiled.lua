@@ -85,10 +85,10 @@ _G.packer_plugins = {
     path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["apprentice.nvim"] = {
+  ["alabaster.nvim"] = {
     loaded = true,
-    path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/apprentice.nvim",
-    url = "https://github.com/adisen99/apprentice.nvim"
+    path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/alabaster.nvim",
+    url = "https://github.com/p00f/alabaster.nvim"
   },
   catppuccin = {
     loaded = true,
@@ -100,11 +100,6 @@ _G.packer_plugins = {
     path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["dracula.nvim"] = {
-    loaded = true,
-    path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/dracula.nvim",
-    url = "https://github.com/Mofiqul/dracula.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -114,11 +109,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -175,11 +165,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/Users/hbzengin/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   undotree = {
     loaded = true,

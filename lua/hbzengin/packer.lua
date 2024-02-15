@@ -14,11 +14,24 @@ return require('packer').startup(function(use)
 	}
 
     use { "catppuccin/nvim", as = "catppuccin" }
-    use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
-    use 'Mofiqul/dracula.nvim'
     use 'Mofiqul/vscode.nvim'
     use 'rose-pine/neovim'
-    use 'folke/tokyonight.nvim'
+    use 'p00f/alabaster.nvim'
+
+    -- No longer using these!
+    -- use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
+    -- use 'Mofiqul/dracula.nvim'
+    -- use 'folke/tokyonight.nvim'
+    -- use 'sjl/badwolf'
+    -- use 'romainl/Apprentice'
+    -- use 'altercation/solarized'
+    -- use { "svermeulen/text-to-colorscheme.nvim" }
+    -- use 'morhetz/gruvbox'
+    -- use 'jacoborus/tender.vim'
+    -- use 'nordtheme/nord'
+    -- use 'rebelot/kanagawa.nvim'
+    -- use { 'navarasu/onedark.nvim', as = "onedark" }
+    -- use 'EdenEast/nightfox.nvim'
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')

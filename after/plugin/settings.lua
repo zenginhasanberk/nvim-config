@@ -1,2 +1,2 @@
 vim.cmd("set termguicolors")
-vim.cmd("colorscheme rose-pine-moon")
+vim.cmd("colorscheme alabaster")

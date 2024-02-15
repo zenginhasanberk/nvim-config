@@ -95,7 +95,8 @@ precmd() {
 }
 
  # PROMPT='%F{magenta}${git_branch}%B%f%F{green}%n@%m %F{white}%1~ %f%b%F{white}%B$%b%f '
- PROMPT='%B%F{green}[~] %F{cyan}%1~ ${git_branch}%f%b'
+ # old prompt with %B PROMPT='%B%F{green}[~] %F{cyan}%1~ ${git_branch}%f%b'
+ PROMPT='%F{green}[~] %F{cyan}%1~ ${git_branch}%f%b'
  # ➜ 
 
  # enable core dumps on current shell
