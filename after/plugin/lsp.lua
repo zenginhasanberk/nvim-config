@@ -6,17 +6,61 @@ lsp.preset("recommended")
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "tsserver",  -- For JavaScript and TypeScript
-        "eslint",    -- For ESLint
-        "pyright",   -- For Python
-        "clangd",    -- For C and C++
+        "tsserver", -- For JavaScript and TypeScript
+        "eslint",   -- For ESLint
+        "pyright",  -- For Python
+        "clangd",   -- For C and C++
+        "lua_ls"    -- For Lua
     }
 })
 
-lsp.configure('clangd', {})
+lsp.configure('clangd', {
+    cmd = { "clangd", "--header-insertion=never" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+    root_dir = require('lspconfig').util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+    settings = {
+        clangd = {
+            includePath = { "/opt/homebrew/include", "/usr/local/include" }
+        }
+    }
+})
 lsp.configure('tsserver', {})
-lsp.configure('pyright', {})
+lsp.configure('pyright', {
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off"
+            }
+        }
+    }
+})
 
+
+-- Configuration for lua_ls (Lua language server)
+lsp.configure('lua_ls', {
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT', -- Use LuaJIT for Neovim
+            },
+            diagnostics = {
+                globals = { 'vim' }, -- Recognize the `vim` global
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true), -- Make the server aware of Neovim runtime files
+                checkThirdParty = false,
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+    on_attach = function(client)
+        if client.server_capabilities.documentFormattingProvider then
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
+        end
+    end,
+})
 
 -- Configuration for nvim-cmp (Completion)
 local cmp = require('cmp')
@@ -71,4 +115,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
-

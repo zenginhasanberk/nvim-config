@@ -1,24 +1,22 @@
--- My remaps
-    -- Deprecated, now have the toggle term plugin    
---vim.keymap.set('n', '<C-x>', ':botright 10split | terminal<CR>', { silent = true })
+vim.g.mapleader = " "
+-- Map U to u: U does the same thing only for one step
+vim.api.nvim_set_keymap('n', 'U', 'u', { noremap = true, silent = true })
 
 -- Easy window navigation with Command + Control
-vim.api.nvim_set_keymap('n', '<C-S-Left>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-Down>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-Up>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-Right>', '<C-w>l', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader><Left>', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><Down>', '<C-w>j', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><Up>', '<C-w>k', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader><Right>', '<C-w>l', { noremap = true })
 
 -- Same but using hjkl for easier navigation with Command + Control
-vim.api.nvim_set_keymap('n', '<C-S-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-S-l>', '<C-w>l', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true })
 
 -- The Primeagen remaps
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "\\", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -40,13 +38,15 @@ end)
 -- vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["*y]])
+-- vim.keymap.set({"n", "v"}, "<leader>y", [["*y]])
+-- vim.keymap.set("n", "<leader>Y", [["*y]])
 vim.keymap.set("n", "<leader>Y", [["*y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["*y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -67,3 +67,4 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+vim.keymap.set('n', '<leader>t', '<cmd>Neotree<CR>', { noremap = true, silent = true })
