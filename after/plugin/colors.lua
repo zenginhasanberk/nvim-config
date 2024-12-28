@@ -1,5 +1,6 @@
 function ColorMyPencils(color)
-    color = color or "gruvbox"
+    color = color or "tokyonight-night"
+
     vim.cmd.colorscheme(color)
     vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
@@ -11,7 +12,7 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "LineNr", { bg = "none", ctermbg = "none" })
     vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none", ctermbg = "none" })
     vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none", ctermbg = "none" })
-  
+
     -- Set the background image
     vim.cmd([[
       augroup MyBackground
@@ -19,6 +20,6 @@ function ColorMyPencils(color)
         autocmd VimEnter * :silent exec "!nitrogen --set-scaled ~/.config/nvim/background.jpg"
       augroup END
     ]])
-  end
+end
 
-  ColorMyPencils()
+ColorMyPencils()

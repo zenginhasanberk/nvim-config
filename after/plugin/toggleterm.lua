@@ -15,19 +15,19 @@ term_nav('<Leader><Down>', '<C-w>j')
 term_nav('<Leader><Up>', '<C-w>k')
 term_nav('<Leader><Right>', '<C-w>l')
 
-require("toggleterm").setup {
-    size = 15,
-    open_mapping = [[<c-x>]],
-    hide_numbers = true,
-    shade_filetypes = {},
-    shading_factor = -3,
-    start_in_insert = true,
-    terminal_mappings = true,
-    direction = 'horizontal',
-    close_on_exit = true,
-    shell = vim.o.shell,
-    float_opts = {
-        border = 'curved',
-        winblend = 3,
-    },
-}
+-- require("toggleterm").setup {
+--     size = 15,
+--     open_mapping = [[<c-x>]],
+--     hide_numbers = true,
+--     shade_filetypes = {},
+--     shading_factor = -3,
+--     start_in_insert = true,
+--     terminal_mappings = true,
+--     direction = 'horizontal',
+--     close_on_exit = true,
+--     shell = vim.o.shell,
+--     float_opts = {
+--         border = 'curved',
+--         winblend = 3,
+--     },
+-- }

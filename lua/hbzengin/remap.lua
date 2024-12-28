@@ -1,18 +1,44 @@
 vim.g.mapleader = " "
+
+vim.o.clipboard = "unnamedplus"
+
+-- Horizontal split
+vim.api.nvim_set_keymap('n', '<leader>hs', ':split<CR>', { noremap = true, silent = true })
+
+-- Remap Cmd + u to redo (Ctrl + r)
+vim.api.nvim_set_keymap('n', '<D-u>', '<C-r>', { noremap = true, silent = true })
+
 -- Map U to u: U does the same thing only for one step
 vim.api.nvim_set_keymap('n', 'U', 'u', { noremap = true, silent = true })
 
 -- Easy window navigation with Command + Control
-vim.api.nvim_set_keymap('n', '<leader><Left>', '<C-w>h', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader><Down>', '<C-w>j', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader><Up>', '<C-w>k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader><Right>', '<C-w>l', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-Left>', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-Down>', '<C-w>j', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-Up>', '<C-w>k', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-Right>', '<C-w>l', { noremap = true })
+
+-- Easy window navigation with Command + Control
+vim.api.nvim_set_keymap('n', '<A-h>', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-j>', '<C-w>j', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', { noremap = true })
+vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', { noremap = true })
+
+-- Consistency with kitty
+vim.api.nvim_set_keymap('n', '<leader>[', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>]', '<C-w>l', { noremap = true })
+
+-- Meta (Option) keys for OSX
+vim.api.nvim_set_keymap('n', '<M-[>', '<C-w>h', { noremap = true })
+vim.api.nvim_set_keymap('n', '<M-]>', '<C-w>l', { noremap = true })
 
 -- Same but using hjkl for easier navigation with Command + Control
 vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>j', '<C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>k', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true })
+
+-- Go back to wherever you were
+vim.keymap.set('n', 'dg', '<C-O>', { noremap = true })
 
 -- The Primeagen remaps
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)

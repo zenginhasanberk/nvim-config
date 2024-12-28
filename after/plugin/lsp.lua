@@ -6,25 +6,49 @@ lsp.preset("recommended")
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "tsserver", -- For JavaScript and TypeScript
-        "eslint",   -- For ESLint
-        "pyright",  -- For Python
-        "clangd",   -- For C and C++
-        "lua_ls"    -- For Lua
+        "ts_ls",   -- For JavaScript and TypeScript
+        "eslint",  -- For ESLint
+        "pyright", -- For Python
+        "clangd",  -- For C and C++
+        "lua_ls",  -- For Lua
+        "gopls"    -- For golang
     }
 })
 
 lsp.configure('clangd', {
-    cmd = { "clangd", "--header-insertion=never" },
+    cmd = {
+        "clangd",
+        "--header-insertion=never",
+        "--completion-style=bundled",
+        "--limit-results=10",
+        "--all-scopes-completion=false"
+    },
     filetypes = { "c", "cpp", "objc", "objcpp" },
     root_dir = require('lspconfig').util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
     settings = {
         clangd = {
-            includePath = { "/opt/homebrew/include", "/usr/local/include" }
+            compilationDatabaseDirectory = "",
+            args = {
+                "-Wall", "-Wextra", "-std=c++17", "--", "--remove", "-W*"
+            },
+            index = {
+                background = "Build"
+            },
+            completion = {
+                allScopesCompletion = true
+            },
+            inlayHints = {
+                enabled = true,
+                parameterNames = true,
+                deducedTypes = true
+            },
+            hover = {
+                showAKA = true
+            }
         }
     }
 })
-lsp.configure('tsserver', {})
+lsp.configure('ts_ls', {})
 lsp.configure('pyright', {
     settings = {
         python = {
@@ -62,23 +86,51 @@ lsp.configure('lua_ls', {
     end,
 })
 
+lsp.configure('gopls', {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = require('lspconfig').util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+})
+
 -- Configuration for nvim-cmp (Completion)
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = {
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<TAB>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
 }
 
 -- Removing Tab and Shift-Tab mappings if they are not needed
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+-- cmp_mappings['<Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
 
 -- Applying cmp mappings
 cmp.setup({
-    mapping = cmp_mappings
+    mapping = cmp_mappings,
+    sources = {
+        { name = 'nvim_lsp', max_item_count = 10 },
+        { name = 'buffer',   max_item_count = 5 },
+        { name = 'path',     max_item_count = 5 },
+    },
+    completion = {
+        keyword_length = 1, -- start completion after 3 characters
+    },
+    matching = {
+        disallow_fuzzy_matching = true,
+        disallow_partial_matching = true,
+        disallow_prefix_unmatching = true,
+    },
 })
 
 -- Setting preferences for lsp-zero
@@ -115,3 +167,6 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+-- Keymap
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true })

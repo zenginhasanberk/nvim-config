@@ -23,8 +23,8 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
     use 'askfiy/visual_studio_code'
     use 'Mofiqul/dracula.nvim'
+    use 'ayu-theme/ayu-vim'
     use { "ellisonleao/gruvbox.nvim" }
-
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use {
@@ -32,20 +32,16 @@ return require('packer').startup(function(use)
         branch = "harpoon2",
         requires = { { "nvim-lua/plenary.nvim" } }
     }
+
     use {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        }
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
     }
 
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end }
+    use 'windwp/nvim-ts-autotag'
 
     use {
         'numToStr/Comment.nvim',
